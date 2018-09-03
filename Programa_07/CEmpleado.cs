@@ -10,65 +10,43 @@ namespace Programa_07
     {
 
         private double sueldo;
-        private double impuesto;
-        private string log;
+        //private double impuesto;
+       
 
         public void Muestra()
         {
-            Console.WriteLine("Sueldo = {0}, Impuesto = {1}", sueldo, impuesto);
+            Console.WriteLine("Sueldo = {0}, Impuesto = {1}", sueldo, Impuesto);
         }
-        //Accesors get y set
 
-        public void set_sueldo(double pSueldo)
+
+        public double Sueldo
         {
-            if (pSueldo < 500 || pSueldo > 15000)
-            {
-                LogError("Sueldo ilegal " + pSueldo.ToString());
-            }
-            else
-            {
-                sueldo = pSueldo;
-            }
-        }
-        public double get_sueldo(int pPassword)
-        {
-            if (pPassword != 123456)
-            {
-                LogError("Password Ilegal");
-                return 0.0;
-            }
-            else
+            get
             {
                 return sueldo;
             }
-        }
-        public double get_impuesto(int pPassword)
-        {
-            if (pPassword != 123456)
+
+            //set
+            //{
+            //    if (value > 5000)
+            //    {
+            //        sueldo = value;
+            //    }
+            //    else
+            //        sueldo = 3000;
+            //}
+            set
             {
-                LogError("Password Ilegal");
-                return 0.0;
-            }
-            else
-            {
-                return impuesto;
+                sueldo = value > 5000 ? value : 3000;
             }
         }
+
+        public double Impuesto { get; set; }
+
         //Mutator
         public void CalculaImpuesto()
         {
-            impuesto = sueldo * 0.16;
-        }
-
-        private void LogError(string pError)
-        {
-            log += pError + "\r\n";
-
-        }
-
-        public void Muestralog()
-        {
-            Console.WriteLine(log);
+            Impuesto = sueldo * 0.16;
         }
     }
 }
